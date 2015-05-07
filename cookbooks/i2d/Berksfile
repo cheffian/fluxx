@@ -1,0 +1,5 @@
+source "https://supermarket.chef.io"
+
+metadata
+
+cookbook 'route53', github: 'pburkholder/route53', branch: 'pdb/nononokogiri'

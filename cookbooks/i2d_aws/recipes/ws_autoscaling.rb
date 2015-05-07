@@ -24,25 +24,30 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-role = 'ws.munchlax'
+i2d_role = 'ws.munchlax'
 
 with_driver 'aws::us-east-1' do
-  aws_security_group role do
-    description      name
+  aws_security_group  i2d_role  do
+    description     name
     inbound_rules   '0.0.0.0/0' => 22
   end
 
-  machine role do
-    action :allocate
-
-    add_machine_options bootstrap_options: {
-      instance_type: 'm1.small',
-      image_id: 'ami-d85e75b0',
-      security_groups: [ role ],
+  aws_launch_configuration i2d_role do
+    image 'ami-d85e75b0'  # Trusty
+    instance_type 'm1.small'
+    options({
+      security_groups: [ i2d_role ],
       iam_instance_profile: 'pburkholder-ec2-bootstrap',
-      key_name: 'pburkholder-one',
+      key_pair: 'pburkholder-one',
       user_data: user_data
-    }
+    })
   end
 
+  aws_auto_scaling_group i2d_role do
+    desired_capacity 1
+    min_size 1
+    max_size 2
+    launch_configuration i2d_role
+    availability_zones ['us-east-1c']
+  end
 end
