@@ -13,12 +13,17 @@ def chef_server_url
 end
 
 def validation_client_name
-  org
+  "#{org}-validator"
 end
 
 def validation_pem
   File.read("#{ENV['HOME']}/.chef/cheffian/#{org}.pem")
 end
+
+def server_cert
+  File.read("#{ENV['HOME']}/.chef/trusted_certs/chefserver_cheffian_com.pem")
+end
+
 
 def user_data
 <<END_SCRIPT
@@ -36,6 +41,10 @@ cat <<END_PEM>/etc/chef/validation.pem
 #{validation_pem}
 END_PEM
 
+cat <<END_CERT>/etc/chef/chef_server.crt
+#{server_cert}
+end
+
 # Set up client.rb
 instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 security_groups=$(curl -s http://169.254.169.254/latest/meta-data/security-groups)
@@ -49,7 +58,7 @@ log_level        :auto
 chef_server_url  "#{chef_server_url}"
 validation_client_name  "#{validation_client_name}"
 node_name        "$node_name"
-environment      "$environment"
+ssl_ca_file      "/etc/chef/chef_server.crt"
 END_CLIENT
 
 # Set first boot JSON

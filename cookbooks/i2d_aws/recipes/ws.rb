@@ -8,13 +8,13 @@
 # The node needs to instantiate with at least the following
 # bits of information
 # - role: which could be based on launch config, e.g. 'id2_ws'
-# - chef_environment: e.g. 'munchlax'
-# - IAM privileges to self-provision: 'ws-munchlax.chefdemo.net'
+# - chef_environment: e.g. 'fluxx'
+# - IAM privileges to self-provision: 'ws.kfluxx.cheffian.com
 #
 # Passing the role & environment with tags would require that the
 # node itself have the IAM privileges to read tags. I'll try first
 # to do it with security group 'role.environment'
-# security_group 'ws.munchlax' do
+# security_group 'ws.fluxx' do
 # end
 #
 # Also, three users: alpha, bravo and charlie
@@ -24,7 +24,7 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-role = 'ws.munchlax'
+role = 'ws.fluxx'
 
 with_driver 'aws::us-east-1' do
   aws_security_group role do
@@ -39,8 +39,8 @@ with_driver 'aws::us-east-1' do
       instance_type: 'm1.small',
       image_id: 'ami-d85e75b0',
       security_groups: [ role ],
-      iam_instance_profile: 'pburkholder-ec2-bootstrap',
-      key_name: 'pburkholder-one',
+      iam_instance_profile: 'cheffian-ec2-bootstrap',
+      key_name: 'divdevops_workshop',
       user_data: user_data
     }
   end
