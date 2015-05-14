@@ -29,7 +29,8 @@ role = 'ws.fluxx'
 with_driver 'aws::us-east-1' do
   aws_security_group role do
     description      name
-    inbound_rules   '0.0.0.0/0' => 22
+    #inbound_rules   '0.0.0.0/0' => 22
+    inbound_rules   '71.178.0.0/16' => 22
   end
 
   machine role do

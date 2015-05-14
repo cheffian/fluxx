@@ -6,3 +6,4 @@
 
 
 include_recipe "i2d::_base"
+include_recipe "chef-dk"
