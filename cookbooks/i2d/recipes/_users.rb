@@ -14,11 +14,17 @@ user_account 'alpha' do
   password '$1$s5i2dCBE$KSRrHpufVP0GrJhczf11O0'
 end
 
+user_account 'bravo' do
+  comment 'Bravo Devop'
+  uid 2002
+  password '$1$s5i2dCBE$KSRrHpufVP0GrJhczf11O0'
+end
+
 user_account 'ubuntu' do
   action :lock
 end
 
 group 'devops' do
   gid 1999
-  members ['alpha', 'peterb']
+  members ['alpha', 'bravo', 'peterb']
 end

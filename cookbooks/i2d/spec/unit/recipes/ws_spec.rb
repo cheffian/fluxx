@@ -11,7 +11,12 @@ describe 'i2d::ws' do
   context 'When all attributes are default, on an unspecified platform' do
 
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
+      runner = ChefSpec::SoloRunner.new do |node|
+        node.set[:cheffian][:role] = 'ws'
+        node.set[:cheffian][:org] =  'fluxx'
+        node.automatic[:ec2][:public_hostname] = 'ec2.aws'
+      end
+
       runner.converge(described_recipe)
     end
 
