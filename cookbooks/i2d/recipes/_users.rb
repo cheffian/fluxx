@@ -36,6 +36,10 @@ end
     recursive true
   end
 
+  file "/home/#{user}/.gitconfig" do
+    content "[init]\n   template_dir = ~/.git_templates"
+  end
+
   template "/home/#{user}/.git_templates/hooks/pre-commit" do
     owner user
     group user

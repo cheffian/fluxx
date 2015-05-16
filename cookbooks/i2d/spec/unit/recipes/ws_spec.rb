@@ -28,6 +28,11 @@ describe 'i2d::ws' do
       chef_run # This should not raise an error
     end
 
+    it 'create git_config' do
+      expect(chef_run).to create_file '/home/alpha/.gitconfig'
+    end
+
+
     it 'create the git template' do
       expect(chef_run) \
        .to render_file('/home/alpha/.git_templates/hooks/pre-commit')

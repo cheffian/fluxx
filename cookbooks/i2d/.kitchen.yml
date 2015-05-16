@@ -14,3 +14,5 @@ suites:
     run_list:
       - recipe[i2d::_users]
     attributes:
+      i2d:
+        route53: false
