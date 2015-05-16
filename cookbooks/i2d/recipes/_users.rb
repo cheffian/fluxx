@@ -33,11 +33,16 @@ end
 
 %w(alpha bravo peterb).each do |user|
   directory "/home/#{user}/.git_templates/hooks" do
+    owner user
+    group user
     recursive true
   end
 
-  file "/home/#{user}/.gitconfig" do
-    content "[init]\n   template_dir = ~/.git_templates"
+  template "/home/#{user}/.gitconfig" do
+    owner user
+    group user
+    mode "0644"
+    source "gitconfig"
   end
 
   template "/home/#{user}/.git_templates/hooks/pre-commit" do

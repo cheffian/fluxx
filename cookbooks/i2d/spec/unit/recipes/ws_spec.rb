@@ -29,7 +29,8 @@ describe 'i2d::ws' do
     end
 
     it 'create git_config' do
-      expect(chef_run).to create_file '/home/alpha/.gitconfig'
+      expect(chef_run).to render_file('/home/alpha/.gitconfig')
+        .with_content(/git_templates/)
     end
 
 
