@@ -28,5 +28,11 @@ describe 'i2d::ws' do
       chef_run # This should not raise an error
     end
 
+    it 'create the git template' do
+      expect(chef_run) \
+       .to render_file('/home/alpha/.git_templates/hooks/pre-commit')
+       .with_content(/STOP THE PRESS/)
+    end
+
   end
 end

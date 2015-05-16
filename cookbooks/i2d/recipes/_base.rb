@@ -12,4 +12,6 @@ execute "update system time" do
   user 'root'
 end
 
-include_recipe "i2d::_r53"
+if node[:i2d][:route53]
+  include_recipe "i2d::_r53"
+end

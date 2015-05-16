@@ -7,10 +7,10 @@ provisioner:
 
 platforms:
   - name: ubuntu-12.04
-  - name: centos-6.5
+#  - name: centos-6.5
 
 suites:
   - name: default
     run_list:
-      - recipe[i2d::default]
+      - recipe[i2d::_users]
     attributes:

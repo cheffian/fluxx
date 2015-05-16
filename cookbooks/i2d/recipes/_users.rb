@@ -20,11 +20,26 @@ user_account 'bravo' do
   password '$1$s5i2dCBE$KSRrHpufVP0GrJhczf11O0'
 end
 
-user_account 'ubuntu' do
-  action :lock
+if ::File.exists?('/home/ubuntu')
+  user_account 'ubuntu' do
+    action :lock
+  end
 end
 
 group 'devops' do
   gid 1999
   members ['alpha', 'bravo', 'peterb']
+end
+
+%w(alpha bravo peterb).each do |user|
+  directory "/home/#{user}/.git_templates/hooks" do
+    recursive true
+  end
+
+  template "/home/#{user}/.git_templates/hooks/pre-commit" do
+    owner user
+    group user
+    mode "0755"
+    source 'pre-commit'
+  end
 end
