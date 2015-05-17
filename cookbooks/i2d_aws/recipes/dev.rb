@@ -17,11 +17,11 @@ with_driver 'aws::us-east-1' do
   aws_security_group i2d_role do
     description      name
     inbound_rules   [
-      { port: 22, protocol: :tcp, sources: [ cidr_block(locale)] },
-      { port: 80, protocol: :tcp, sources: [ cidr_block(locale)] }
+      { port: 22, protocol: :tcp, sources: [ cidr_block(locale), "ws.#{org}" ] },
+      { port: 80, protocol: :tcp, sources: [ cidr_block(locale), "ws.#{org}" ] },
     ]
   end
-
+ 
   machine i2d_role do
     action :allocate
 
@@ -34,5 +34,4 @@ with_driver 'aws::us-east-1' do
       user_data: user_data
     }
   end
-
 end
