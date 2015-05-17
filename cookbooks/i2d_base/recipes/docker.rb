@@ -30,7 +30,7 @@ execute "clean-up docker" do
   EOH
 end
 
-docker_image "centos" do
+docker_image "ubuntu" do
   cmd_timeout 3000
   ignore_failure true
 end

@@ -18,4 +18,4 @@ template '/etc/profile.d/chefdk.sh' do
   source "bash_profile.erb"
 end
 
-  # docker?
+include_recipe "i2d_base::docker"

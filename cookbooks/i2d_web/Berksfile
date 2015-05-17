@@ -1,4 +1,3 @@
-ENV['SSL_CERT_FILE'] = "#{ENV['HOME']}/.chef/trusted_certs/bundle.crt"
 source "https://supermarket.chef.io"
 
 metadata

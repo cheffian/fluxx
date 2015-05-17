@@ -15,3 +15,6 @@ suites:
     attributes:
       i2d_base:
         route53: false
+  - name: docker
+    run_list:
+      - recipe[i2d_base::docker]
