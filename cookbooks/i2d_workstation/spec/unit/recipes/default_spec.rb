@@ -6,15 +6,14 @@
 
 require 'spec_helper'
 
-describe 'i2d::ws' do
+describe 'i2d_workstation::default' do
 
   context 'When all attributes are default, on an unspecified platform' do
 
     let(:chef_run) do
       runner = ChefSpec::SoloRunner.new do |node|
-        node.set[:cheffian][:role] = 'ws'
-        node.set[:cheffian][:org] =  'fluxx'
-        node.automatic[:ec2][:public_hostname] = 'ec2.aws'
+        node.set[:i2d_base][:route53] = false
+#        node.automatic[:ec2][:public_hostname] = 'ec2.aws'
       end
 
       runner.converge(described_recipe)
@@ -28,17 +27,12 @@ describe 'i2d::ws' do
       chef_run # This should not raise an error
     end
 
-    it 'create git_config' do
-      expect(chef_run).to render_file('/home/alpha/.gitconfig')
-        .with_content(/git_templates/)
+    it 'should include chefdk' do
+      expect(chef_run).to include_recipe('chef-dk')
     end
 
-
-    it 'create the git template' do
-      expect(chef_run) \
-       .to render_file('/home/alpha/.git_templates/hooks/pre-commit')
-       .with_content(/STOP THE PRESS/)
+    it 'should set chefdk path stuff' do
+      expect(chef_run).to render_file('/etc/profile.d/chefdk.sh')
     end
-
   end
 end

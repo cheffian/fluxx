@@ -12,7 +12,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[i2d::_users]
+      - recipe[i2d_workstation::default]
     attributes:
-      i2d:
+      i2d_base:
         route53: false
