@@ -1,0 +1,17 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: users
+    run_list:
+      - recipe[i2d_base::users]
+    attributes:
+      i2d_base:
+        route53: false
