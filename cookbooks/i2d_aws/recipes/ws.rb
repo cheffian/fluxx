@@ -24,22 +24,22 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-role = 'ws.fluxx'
+i2d_role = 'ws.fluxx'
 
 with_driver 'aws::us-east-1' do
-  aws_security_group role do
+  aws_security_group i2d_role do
     description      name
     inbound_rules   '0.0.0.0/0' => 22
     #inbound_rules   '71.178.0.0/16' => 22
   end
 
-  machine role do
+  machine i2d_role do
     action :allocate
 
     add_machine_options bootstrap_options: {
       instance_type: 'm1.small',
       image_id: 'ami-d85e75b0',
-      security_groups: [ role ],
+      security_groups: [ i2d_role ],
       iam_instance_profile: 'cheffian-ec2-bootstrap',
       key_name: 'divdevops_workshop',
       user_data: user_data
