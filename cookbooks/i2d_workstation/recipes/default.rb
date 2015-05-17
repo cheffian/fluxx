@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: i2d
-# Recipe:: ws (workstation)
+# Cookbook Name:: i2d_workstation
+# Recipe:: default
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
