@@ -4,14 +4,10 @@
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
-# See https://github.com/chef-cookbooks/httpd
+# The i2d_web::core recipe does all the web stuff
+# and is easily tested.  This default recipe
+# includes the base stuff for EC2 production:
+#   packages, route53, ntp, apt
 
-package 'apache2'
-
-service 'apache2' do
-  action [ :enable, :start ]
-end
-
-#httpd_service 'default' do
-#  action [:create, :start]
-#end
+include_recipe "i2d_base::base"
+include_recipe "i2d_web::core"

@@ -9,7 +9,7 @@ platforms:
   - name: ubuntu-14.04 # AKA trusty
 
 suites:
-  - name: default
+  - name: core
     run_list:
-      - recipe[i2d_web::default]
+      - recipe[i2d_web::core]
     attributes:

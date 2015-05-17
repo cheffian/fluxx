@@ -2,10 +2,8 @@
 
 # -e: above, means exit on any error
 
-foodcritic .
+foodcritic -f any .
 
 rspec
-
-false
 
 kitchen test

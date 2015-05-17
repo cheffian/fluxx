@@ -10,4 +10,8 @@ describe 'i2d_web::default' do
     it { should be_enabled }
   end
 
+#  describe command('curl -s http://localhost') do
+#    its(:stdout) { should_not contain('Ubuntu') }
+#  end
+
 end

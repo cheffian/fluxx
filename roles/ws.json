@@ -8,6 +8,6 @@
     "override_attributes": {
     },
     "run_list": [
-        "recipe[i2d::ws]"
+        "recipe[i2d_workstation::default]"
     ]
 }
