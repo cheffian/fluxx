@@ -24,10 +24,10 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-role = 'ws.fluxx'
+i2d_role = 'ws.fluxx'
 
 with_driver 'aws::us-east-1' do
-  machine role do
+  machine i2d_role do
     action :destroy
   end
 

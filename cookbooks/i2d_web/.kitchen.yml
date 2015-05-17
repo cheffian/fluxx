@@ -1,0 +1,15 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04 # AKA trusty
+
+suites:
+  - name: default
+    run_list:
+      - recipe[i2d_web::default]
+    attributes:
