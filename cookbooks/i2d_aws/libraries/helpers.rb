@@ -3,16 +3,14 @@
 #   - node name: "#{role}-#{instance_id}"
 #   - environment: from security group
 
-def cidr_block
-  case node[:i2d_aws][:locale]
+def cidr_block(locale)
+  case locale
   when 'home'
-   '71.178.175.140/32'
+    '71.178.175.140/32'
   when 'excella'
-   '50.241.130.54/32'
-  when 'global'
-   '0.0.0.0/0'
+    '50.241.130.54/32'
   else
-    raise ArgumentError, "No Locale specified via node.i2d_aws.locale"
+    '0.0.0.0/0'
   end
 end
 

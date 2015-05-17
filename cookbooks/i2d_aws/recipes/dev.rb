@@ -7,13 +7,19 @@
 
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
+locale = 'home'
 
-i2d_role = 'dev.fluxx'
+i2d_role = 'dev.' + org
+Chef::Log.info("i2d_role: #{i2d_role}")
+
 
 with_driver 'aws::us-east-1' do
   aws_security_group i2d_role do
     description      name
-    inbound_rules   [  cidr_block => 22, cidr_block => 80 ]
+    inbound_rules   [
+      { port: 22, protocol: :tcp, sources: [ cidr_block(locale)] },
+      { port: 80, protocol: :tcp, sources: [ cidr_block(locale)] }
+    ]
   end
 
   machine i2d_role do
