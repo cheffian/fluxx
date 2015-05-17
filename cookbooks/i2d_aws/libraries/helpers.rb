@@ -3,6 +3,19 @@
 #   - node name: "#{role}-#{instance_id}"
 #   - environment: from security group
 
+def cidr_block
+  case node[:i2d_aws][:locale]
+  when 'home'
+   '71.178.175.140/32'
+  when 'excella'
+   '50.241.130.54/32'
+  when 'global'
+   '0.0.0.0/0'
+  else
+    raise ArgumentError, "No Locale specified via node.i2d_aws.locale"
+  end
+end
+
 def org
   raise ArgumentError, 'Need env var: CHEF_SERVER_ORG' if ENV['CHEF_SERVER_ORG'].nil?
   ENV['CHEF_SERVER_ORG']
@@ -82,4 +95,4 @@ exit
 END_SCRIPT
 end # def user_data
 
-print user_data
+# print user_data

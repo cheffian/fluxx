@@ -6,7 +6,7 @@
 
 require 'spec_helper'
 
-describe 'i2d_aws::default' do
+describe 'i2d_aws::dev' do
 
   context 'When all attributes are default, on an unspecified platform' do
 
