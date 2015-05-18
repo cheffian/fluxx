@@ -19,7 +19,7 @@ with_driver 'aws::us-east-1' do
     action :destroy
   end
 
-  aws_security_group i2d_role do
-    action :destroy
-  end
+#  aws_security_group i2d_role do
+#    action :destroy
+#  end
 end
