@@ -7,3 +7,6 @@
 .chef/encrypted_data_bag_secret
 berks-cookbooks
 .chef/trusted_certs
+
+#
+Berksfile.lock

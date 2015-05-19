@@ -15,7 +15,7 @@ create_org() {
 }
 
 copy_pem() {
-  if  [ -f $HOME/.chef/cheffian/$chef_org.pem ]
+  if  [ -f $HOME/.chef/cheffian/$chef_org.pem ]; then
     echo COPY_PEM: $chef_org.pem already here
   else
     scp ubuntu@chefserver.cheffian.com:$chef_org.pem \
@@ -27,8 +27,8 @@ policy() {
   prior=`pwd`
 
   cd $repo/cookbooks
-    berks upload
     berks vendor
+    berks upload
   
   cd $repo
 
