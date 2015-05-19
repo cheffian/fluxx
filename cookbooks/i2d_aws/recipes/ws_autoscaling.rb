@@ -9,7 +9,7 @@
 # bits of information
 # - role: which could be based on launch config, e.g. 'id2_ws'
 # - chef_environment: e.g. 'fluxx'
-# - IAM privileges to self-provision: 'ws-fluxx.cheffian.com'
+# - IAM privileges to self-provision: 'ws-fluxx.devopsdc.com'
 #
 # Passing the role & environment with tags would require that the
 # node itself have the IAM privileges to read tags. I'll try first

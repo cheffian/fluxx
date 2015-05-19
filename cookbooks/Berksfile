@@ -1,0 +1,7 @@
+source "https://supermarket.chef.io"
+
+cookbook 'route53', github: 'pburkholder/route53', branch: 'pdb/nononokogiri'
+cookbook 'chef-cd-workshop', ref: 'c424f85df865894950741b44177500099cf38f41', github: 'all-the-things/chef-cd-workshop'
+cookbook 'i2d_base', path: './i2d_base'
+cookbook 'i2d_workstation', path: './i2d_workstation'
+cookbook 'i2d_web', path: './i2d_web'
