@@ -24,7 +24,8 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-i2d_role = 'ws.fluxx'
+i2d_role = 'ws.' + org
+Chef::Log.info("i2d_role: #{i2d_role}")
 
 with_driver 'aws::us-east-1' do
   aws_security_group i2d_role do

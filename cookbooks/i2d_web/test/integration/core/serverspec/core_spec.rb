@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'i2d_web::default' do
+describe 'i2d_web::core' do
 
   # Serverspec examples can be found at
   # http://serverspec.org/resource_types.html

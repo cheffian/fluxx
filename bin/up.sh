@@ -3,7 +3,8 @@
 # ssh ubuntu@chefserver.cheffian.org
 # for org in 
 
-orgs="fluxx milk rocket moon sun peace time brain dream party bread money"
+#orgs="fluxx milk rocket moon sun peace time brain dream party bread money"
+orgs="rocket moon sun peace time brain dream party bread money"
 repo=/Users/pburkholder/Projects/cheffian/fluxx
 
 create_org() {

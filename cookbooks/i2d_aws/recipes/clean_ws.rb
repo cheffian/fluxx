@@ -9,7 +9,7 @@
 # bits of information
 # - role: which could be based on launch config, e.g. 'id2_ws'
 # - chef_environment: e.g. 'fluxx'
-# - IAM privileges to self-provision: 'ws.kfluxx.cheffian.com
+# - IAM privileges to self-provision: 'ws.fluxx.devopdc.com'
 #
 # Passing the role & environment with tags would require that the
 # node itself have the IAM privileges to read tags. I'll try first
@@ -24,7 +24,7 @@
 require 'chef/provisioning/aws_driver'
 require_relative '../libraries/helpers'
 
-i2d_role = 'ws.fluxx'
+i2d_role = "ws.#{org}""
 
 with_driver 'aws::us-east-1' do
   machine i2d_role do
