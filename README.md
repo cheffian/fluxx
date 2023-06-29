@@ -1,7 +1,7 @@
 Fluxx
 =====
 
-Fluxx is ont only an auwsume card game, http://www.looneylabs.com/games/fluxx, it's also core of how we're organizing development repositories for the Intro2Devops class.
+Fluxx isn't only an awesome card game, http://www.looneylabs.com/games/fluxx, it's also core to how we're organizing development repositories for the Intro2Devops class.
 
 ![Fluxx image](https://cf.geekdo-images.com/images/pic2405641.jpg)
 
